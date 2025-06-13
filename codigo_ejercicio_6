@@ -1,0 +1,105 @@
+#Aquí está el código el ejercicio 10 en R
+#Tarea 6
+#Elaborada por María Susana Ruíz Palacios
+#Fechas de actualización 3 de junio de 2025
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+library(tidyverse)
+data("murders")
+#Ejercicio 1
+p <- ggplot(data = murders)
+#p1 <- ggplot(murders)
+#p2 <- murders %>% ggplot()
+class(p)
+#class(p1)
+#class(p2)
+
+#Ejericicio 2
+print(p)
+p
+
+#Ejercicio 3
+data("heights")
+head(heights)
+p2 <- heights %>% ggplot()
+
+#Ejercicio 4
+#Fue pregunta
+
+#Ejercicio 5
+murders %>% ggplot(aes(x = population, y =total )) +
+geom_point()
+
+#Ejercicio 6
+murders %>% ggplot(aes(x = total, y =population )) +
+  geom_point()
+
+#Ejercicio 7
+#pregunta
+
+#Ejercicio 8
+murders %>% ggplot(aes(x = total, y =population, label = abb )) +
+  geom_point() +
+  geom_label()
+
+#Ejercicio 9
+#pregunta
+murders %>% ggplot(aes(x = total, y =population, label = abb), "blue") +
+  geom_point() +
+  geom_label()
+
+#Ejercicio 10
+#murders %>% ggplot(aes(x = total, y =population)) +
+#   geom_point() +
+# 
+#Ejercicio 11
+# pregunta
+#Ejercicio 12
+murders %>% ggplot(aes(x = total, y =population)) +
+  geom_point() +
+  geom_label(aes(label = abb, color =region))
+
+#Ejercicio 13
+p <- murders %>% ggplot(aes(population, total, label = abb, color = region)) +
+  geom_label() +
+  scale_x_log10()+
+  scale_y_log10()+
+  ggtitle("Gun murder data")
+p
+#Ejercicio 14 añadiento una capa con ggtitle
+
+#Ejercicio 15
+data("heights")
+head(heights)
+p <- heights$height
+p
+ggplot(heights, aes(height)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
+  labs(title = "Histograma de alturas", x = "Altura en pulgadas", y = "Frecuencia")
+#Ejericio 16
+# Creando el  objeto ggplot llamado p con la variable height mapeada al eje x
+p <- heights %>%
+  ggplot(aes(x = height))
+p + geom_histogram(binwidth = 1, fill = "steelblue", color = "white")
+
+#Ejercicio 17
+p + geom_histogram()
+
+#Ejercicio 18
+p + geom_histogram(binwidth = 1)
+
+#Ejercicio 20
+heights %>% 
+  ggplot(aes(height, group = sex)) +
+  geom_density ()
+
+#Ejercicio 21
+heights %>% 
+  ggplot(aes(height, color = sex)) +
+  geom_density ()
+
+#Ejercicio 22
+heights %>% 
+  ggplot(aes(x = height, fill = sex, color = sex)) + 
+  geom_density(alpha = 0.2)
